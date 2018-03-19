@@ -69,7 +69,7 @@ void cRender::render() {
 		Tahoma->OnLostDevice();
 	}
 
-	// cant see black for some reason
+	// Call Rendering here.
 	Text((char*)"kitto d3d overlay", 10, + 50, lefted, D3DCOLOR_RGBA(255, 0, 0, 255), Tahoma);
 
 
