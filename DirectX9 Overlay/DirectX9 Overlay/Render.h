@@ -14,7 +14,7 @@ public:
 	LPDIRECT3DDEVICE9 d3ddev;    // the pointer to the device class
 
 	void initD3D(HWND hwnd);
-	void render();
+	void render(HWND* targetHwnd);
 	void cleanD3D();
 
 

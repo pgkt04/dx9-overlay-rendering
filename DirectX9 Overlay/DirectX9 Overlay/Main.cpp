@@ -1,5 +1,5 @@
 #include "Header.h"
-HWND hwnd;
+HWND hwnd, WindowHWND;
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 	const MARGINS margin = { 0, 0, Render.RenderWidth, Render.RenderHeight };
@@ -24,10 +24,10 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
 	// Define Window Name
-	auto window_name = "osu!";
+	auto window_name = "Untitled - Notepad";
 
 	// Find Window
-	auto WindowHWND = FindWindow(NULL, window_name);
+	WindowHWND = FindWindow(NULL, window_name);
 
 	RECT wndRc;
 
@@ -91,8 +91,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		SetWindowPos(hwnd, HWND_TOPMOST, wndRc.left, wndRc.top, Render.RenderWidth, Render.RenderHeight, SWP_NOMOVE | SWP_NOSIZE);
 
-		Render.render();
-
+		Render.render(&WindowHWND);
 
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
 			TranslateMessage(&msg);
@@ -101,6 +100,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		if (msg.message == WM_QUIT) {
 			exit(0);
 		}
+
 	}
 
 	Render.cleanD3D();

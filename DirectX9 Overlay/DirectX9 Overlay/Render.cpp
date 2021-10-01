@@ -52,7 +52,7 @@ void cRender::initD3D(HWND hwnd)
 	initFonts();
 }
 
-void cRender::render() {
+void cRender::render(HWND* targetHwnd) {
 	d3ddev->BeginScene();    // begins the 3D scene
 	// clear the window alpha
 	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_ARGB(0, 0, 0, 0), 1.0f, 0);
@@ -69,8 +69,12 @@ void cRender::render() {
 		Tahoma->OnLostDevice();
 	}
 
-	// Call Rendering here.
-	Text((char*)"kitto d3d overlay", 10, + 50, lefted, D3DCOLOR_RGBA(255, 0, 0, 255), Tahoma);
+	if (*targetHwnd == GetForegroundWindow())
+	{
+		// Call Rendering here.
+		Text((char*)"kitto d3d overlay", 10, +50, lefted, D3DCOLOR_RGBA(255, 0, 0, 255), Tahoma);
+
+	}
 
 
 	d3ddev->EndScene();    // ends the 3D scene
