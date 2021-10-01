@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DirectX9 Overlay/.vs/DirectX9 Overlay/v16
+/DirectX9 Overlay/DirectX9 Overlay/x64/Debug
+/DirectX9 Overlay/x64/Debug
